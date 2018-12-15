@@ -11,10 +11,5 @@
 |
 */
 
-Route::get('/posts', 'PostController@index');
-Route::get('/posts/{post}','PostController@show');
-Route::get('/posts/create','PostController@create');
-Route::post('/posts','PostController@store');
-Route::get('/posts/{post}/edit','PostController@edit');
-Route::put('/posts/{post}','PostController@update');
-Route::get('/posts/delete','PostController@delete');
+// 文章
+Route::resource('posts','PostsController');
