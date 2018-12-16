@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title',100)->default('')->comment('文章标题');
             $table->text('content')->comment('文章内容');
-            $table->integer('user_id')->default(0)->comment('作者🆔');
+            $table->integer('user_id')->default(0)->comment('作者id');
             $table->timestamps();
         });
     }
