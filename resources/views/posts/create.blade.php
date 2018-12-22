@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="col-sm-8 blog-main">
+
+    @include('shared._error')
+
     <form action="{{ route('posts.store') }}" method="POST">
         {{ csrf_field() }}
 
