@@ -14,7 +14,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
         return view('posts.index', compact('posts'));
     }
 
@@ -36,7 +37,9 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = Post::create($request->only(['title', 'content']));
+
+        return redirect()->route('posts.show', compact('post'));
     }
 
     /**
@@ -45,9 +48,9 @@ class PostsController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        return view('posts.show');
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -81,6 +84,6 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd($id);
     }
 }
