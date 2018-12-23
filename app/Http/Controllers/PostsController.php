@@ -36,7 +36,7 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostRequest $request,Post $post)
+    public function store(PostRequest $request, Post $post)
     {
         $post = Post::create($request->only(['title', 'content']));
 
@@ -86,5 +86,11 @@ class PostsController extends Controller
     public function destroy($id)
     {
         dd($id);
+    }
+
+    public function uploadImage(Request $request)
+    {
+        $path=$request->file('wangEditorH5File')->storePublicly(md5(time()));
+        return asset('storage/' . $path);
     }
 }

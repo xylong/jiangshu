@@ -13,3 +13,4 @@
 
 // 文章
 Route::resource('posts','PostsController');
+Route::post('upload_image','PostsController@uploadImage')->name('posts.upload_image');

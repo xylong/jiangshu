@@ -42,7 +42,7 @@
                         <a href="/user/5">Kassandra Ankunding2</a>
                     </p>
 
-                    <p>{{str_limit($post->content, 100, '...')}}</p>
+                    <p>{!! str_limit($post->content, 255, '...') !!}</p>
                     <p class="blog-post-meta">赞 0 | 评论 0</p>
                 </div>
             @endforeach
