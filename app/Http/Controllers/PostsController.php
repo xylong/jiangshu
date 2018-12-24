@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Handlers\ImageUploadHandler;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -88,9 +89,8 @@ class PostsController extends Controller
         dd($id);
     }
 
-    public function uploadImage(Request $request)
+    public function uploadImage(Request $request, ImageUploadHandler $uploader)
     {
-        $path=$request->file('wangEditorH5File')->storePublicly(md5(time()));
-        return asset('storage/' . $path);
+        return $request->wangEditorH5File ? $uploader->save($request->wangEditorH5File, 'avatar', 1, 1024) : '';
     }
 }
