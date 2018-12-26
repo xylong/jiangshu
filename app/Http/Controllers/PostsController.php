@@ -16,8 +16,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-
         $posts = Post::orderBy('created_at', 'desc')->paginate(10);
+
         return view('posts.index', compact('posts'));
     }
 
@@ -62,21 +62,17 @@ class PostsController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        return view('posts.edit');
+        return view('posts.edit',compact('post'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function update(PostRequest $request, Post $post)
     {
-        //
+        $post->update($request->all());
+
+        return redirect()->route('posts.edit', compact('post'));
     }
 
     /**
