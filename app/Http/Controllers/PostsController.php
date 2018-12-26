@@ -39,7 +39,8 @@ class PostsController extends Controller
      */
     public function store(PostRequest $request, Post $post)
     {
-        $post = Post::create($request->only(['title', 'content']));
+        $post->fill($request->only(['title','content']));
+        $post->save();
 
         return redirect()->route('posts.show', compact('post'));
     }
@@ -91,6 +92,6 @@ class PostsController extends Controller
 
     public function uploadImage(Request $request, ImageUploadHandler $uploader)
     {
-        return $request->wangEditorH5File ? $uploader->save($request->wangEditorH5File, 'avatar', 1, 1024) : '';
+        return $request->wangEditorH5File ? $uploader->save($request->wangEditorH5File, 'post', 1, 1024) : '';
     }
 }
