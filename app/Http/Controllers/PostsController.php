@@ -81,9 +81,11 @@ class PostsController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        dd($id);
+        $post->delete();
+
+        return redirect()->route('posts.index');
     }
 
     public function uploadImage(Request $request, ImageUploadHandler $uploader)

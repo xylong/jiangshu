@@ -8,9 +8,15 @@
             <a style="margin: auto"  href="{{ route('posts.edit', $post->id) }}">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
             </a>
-            <a style="margin: auto"  href="{{ route('posts.destroy', $post->id) }}">
+
+            <a style="margin: auto" onclick="document.getElementById('delete-post').submit();">
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             </a>
+
+            <form action="{{ route('posts.destroy', $post->id) }}" method="post" id="delete-post" style="display: none;">
+                {{ method_field('DELETE') }}
+                {{ csrf_field() }}
+            </form>
         </div>
 
         <p class="blog-post-meta">
