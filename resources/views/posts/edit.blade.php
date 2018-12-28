@@ -8,13 +8,13 @@
 
             <div class="form-group">
                 <label>标题</label>
-                <input name="title" type="text" class="form-control" value="{{ $post->title }}">
+                <input name="title" type="text" class="form-control" value="{{ old('title',$post->title) }}">
             </div>
 
             <div class="form-group">
                 <label>内容</label>
                 <textarea id="content" name="content" class="form-control" style="height:400px;max-height:500px;">
-                    {!! $post->content !!}
+                    {{ old('content', $post->content) }}
                 </textarea>
             </div>
 
