@@ -36,6 +36,6 @@ class ImageUploadHandler
 
         $path = $file->storePubliclyAs($folder_name, $filename);
 
-        return asset('storage/' . $path);
+        return asset(storage_path() . DIRECTORY_SEPARATOR . $path);
     }
 }
