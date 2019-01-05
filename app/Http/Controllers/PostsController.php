@@ -72,7 +72,7 @@ class PostsController extends Controller
     {
         $post->update($request->all());
 
-        return redirect()->route('posts.edit', compact('post'));
+        return redirect()->route('posts.show', compact('post'));
     }
 
     /**
